@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stone</title>
+</head>
+<body>
+	<script>
+		let stone = {
+			radius: 10,
+			mass: 2,
+			color: "black",
+			speed: {x: 1, y: 1},
+			position: {x: 0, y: 0},
+			elm: null,
+		}
+
+		function start() {
+			const stoneElm = document.createElement("div")
+			stoneElm.style.width = 2 * stone.radius + "px"
+			stoneElm.style.height = 2 * stone.radius + "px"
+			stoneElm.style.borderRadius = '20000px'
+			stoneElm.style.backgroundColor = stone.color
+			stoneElm.style.position = 'absolute'
+			stoneElm.style.top = stone.position.y + "px"
+			stoneElm.style.left = stone.position.x + "px"
+			stone.elm = stoneElm
+
+			document.body.appendChild(stoneElm)
+		}
+
+		function update() {
+			stone.position.x = stone.position.x + stone.speed.x
+			stone.position.y = stone.position.y + stone.speed.y
+			stone.elm.style.top = stone.position.y + "px"
+			stone.elm.style.left = stone.position.x + "px"
+			requestAnimationFrame(update)
+		}
+
+		start()
+		update()
+
+	</script>
+</body>
+</html>
