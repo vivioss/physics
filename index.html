@@ -6,35 +6,21 @@
 	<title>Stone</title>
 </head>
 <body>
+	<script src="game-object/Stone.js"></script>
+	<script src="math/Vector2.js"></script>
 	<script>
-		let stone = {
-			radius: 10,
-			mass: 2,
-			color: "black",
-			speed: {x: 1, y: 1},
-			position: {x: 0, y: 0},
-			elm: null,
-		}
+		let stone = new Stone(10, 2, 'red', new Vector2(2, 0), new Vector2())
+		let stoneTwo = new Stone(12, 5, 'green', new Vector2(2, 3), new Vector2(2, 0))
 
 		function start() {
-			const stoneElm = document.createElement("div")
-			stoneElm.style.width = 2 * stone.radius + "px"
-			stoneElm.style.height = 2 * stone.radius + "px"
-			stoneElm.style.borderRadius = '20000px'
-			stoneElm.style.backgroundColor = stone.color
-			stoneElm.style.position = 'absolute'
-			stoneElm.style.top = stone.position.y + "px"
-			stoneElm.style.left = stone.position.x + "px"
-			stone.elm = stoneElm
 
-			document.body.appendChild(stoneElm)
 		}
 
 		function update() {
-			stone.position.x = stone.position.x + stone.speed.x
-			stone.position.y = stone.position.y + stone.speed.y
-			stone.elm.style.top = stone.position.y + "px"
-			stone.elm.style.left = stone.position.x + "px"
+
+			stone.update()
+			stoneTwo.update()
+
 			requestAnimationFrame(update)
 		}
 
